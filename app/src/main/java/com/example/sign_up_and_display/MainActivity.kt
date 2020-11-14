@@ -20,10 +20,10 @@ class MainActivity : AppCompatActivity() {
 
         register.setOnClickListener {
             if ((username.text.toString().equals("viviene") && password.text.toString().equals("viviene"))) {
-                val goNext = Intent(this@MainActivity, EditProfile::class.java).apply {
+                val intent = Intent(this, EditProfile::class.java).apply {
                     Toast.makeText(applicationContext,"Successful login.", Toast.LENGTH_SHORT).show()
                 }
-                startActivity(goNext)
+                startActivity(intent)
 
             } else {
                 Toast.makeText(applicationContext,"Error. Try again.", Toast.LENGTH_SHORT).show()

@@ -52,9 +52,9 @@ class EditProfile : AppCompatActivity() {
 
         val imgButton = findViewById<ImageButton>(R.id.imageButton)
 
-        imgButton.setOnClickListener {
+        imgButton.setOnClickListener { it: View? ->
 
-            val nextPage = Intent (this@EditProfile, DisplayProfile::class.java).apply {
+            val intent = Intent (this@EditProfile, DisplayProfile::class.java).apply {
                 Toast.makeText(applicationContext, "Saved", Toast.LENGTH_SHORT).show()
             }
 
@@ -66,15 +66,15 @@ class EditProfile : AppCompatActivity() {
             val pNUM = phoneNumber.text.toString()
             val dateTime = simpleDateFormat.format(Date())
 
-            nextPage.putExtra("First name", firstN)
-            nextPage.putExtra("Last name", lastN)
-            nextPage.putExtra("Username", userN)
-            nextPage.putExtra("Email Address", email)
-            nextPage.putExtra("Age", Age)
-            nextPage.putExtra("Phone number", pNUM)
-            nextPage.putExtra("Date & Time", dateTime)
+            intent.putExtra("First name", firstN)
+            intent.putExtra("Last name", lastN)
+            intent.putExtra("Username", userN)
+            intent.putExtra("Email Address", email)
+            intent.putExtra("Age", Age)
+            intent.putExtra("Phone number", pNUM)
+            intent.putExtra("Date & Time", dateTime)
 
-            startActivity(nextPage)
+            startActivity(intent)
 
         }
 

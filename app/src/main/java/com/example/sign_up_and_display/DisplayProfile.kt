@@ -19,19 +19,13 @@ class DisplayProfile : AppCompatActivity() {
         val emailAdd = intent.getStringExtra("Email Address")
         val Age = intent.getStringExtra("Age")
         val pNUM = intent.getStringExtra("Phone number")
-        val dateTime = intent.getStringExtra("Date & Time")
+        val date = intent.getStringExtra("Birthday")
 
         val displayChanges = findViewById<TextView>(R.id.changes)
 
         displayChanges.text =
             "First name: $firstN\tLast name: $lastN\nUsername: $userN\n Email: $emailAdd\nAge: " +
-                    "$Age\nContact number: $pNUM\nDate & Time (Edited): $dateTime"
+                    "$Age\nContact number: $pNUM\nDate & Time (Edited): $date"
 
-        val logoutBtn = findViewById<TextView>(R.id.logout)
-        logoutBtn.setOnClickListener {
-            val logout = Intent(this@DisplayProfile, MainActivity::class.java).apply {
-                Toast.makeText(applicationContext, "Logged out", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 }

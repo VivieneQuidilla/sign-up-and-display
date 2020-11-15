@@ -16,8 +16,6 @@ class EditProfile : AppCompatActivity() {
         val firstname = findViewById<EditText>(R.id.editFirstName)
         val lastname = findViewById<EditText>(R.id.editLastName)
         val username = findViewById<EditText>(R.id.editUserName)
-        val emailAddress = findViewById<EditText>(R.id.editEmail)
-        val simpleDateFormat = SimpleDateFormat("Date' yyyy.MM.dd ', Time: 'HH:mm")
 
         val ageValue = findViewById<TextView>(R.id.textAge)
         val thisAge = findViewById<SeekBar>(R.id.seekBarAge)
@@ -28,7 +26,7 @@ class EditProfile : AppCompatActivity() {
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
-
+                Toast.makeText(applicationContext, "Move left to right", Toast.LENGTH_SHORT).show()
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
@@ -36,25 +34,10 @@ class EditProfile : AppCompatActivity() {
             }
         })
 
-        val phoneNumber = findViewById<EditText>(R.id.editPhoneNumber)
-        val switch = findViewById<Switch>(R.id.switchButton)
-        switch.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener
-        {
-            override fun onCheckedChanged(buttonview: CompoundButton?, isChecked: Boolean)
-            {
-                if (isChecked) {
-                    phoneNumber.setVisibility(View.VISIBLE)
-                } else {
-                    phoneNumber.setVisibility(View.INVISIBLE)
-                }
-            }
-        })
-
         val imgButton = findViewById<ImageButton>(R.id.imageButton)
-
         imgButton.setOnClickListener { it: View? ->
 
-            val intent = Intent (this@EditProfile, DisplayProfile::class.java).apply {
+            val intent = Intent (this@EditProfile, SaveProfile::class.java).apply {
                 Toast.makeText(applicationContext, "Saved", Toast.LENGTH_SHORT).show()
             }
 
@@ -62,19 +45,12 @@ class EditProfile : AppCompatActivity() {
             val firstN = firstname.text.toString()
             val lastN = lastname.text.toString()
             val userN = username.text.toString()
-            val email = emailAddress.text.toString()
-            val pNUM = phoneNumber.text.toString()
-            val dateTime = simpleDateFormat.format(Date())
 
             intent.putExtra("First name", firstN)
             intent.putExtra("Last name", lastN)
             intent.putExtra("Username", userN)
-            intent.putExtra("Email Address", email)
             intent.putExtra("Age", Age)
-            intent.putExtra("Phone number", pNUM)
-            intent.putExtra("Date & Time", dateTime)
 
-            startActivity(intent)
 
         }
 

@@ -15,8 +15,10 @@ class SaveProfile : AppCompatActivity() {
         val emailAddress = findViewById<EditText>(R.id.editEmail)
 
         val phoneNumber = findViewById<EditText>(R.id.editPhoneNumber)
-        val switch = findViewById<Switch>(R.id.switchButton)
-        switch.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener
+        val switchBtn = findViewById<Switch>(R.id.switchButton)
+
+        phoneNumber.setVisibility(View.INVISIBLE)
+        switchBtn.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener
         {
             override fun onCheckedChanged(buttonview: CompoundButton?, isChecked: Boolean)
             {
@@ -29,14 +31,14 @@ class SaveProfile : AppCompatActivity() {
         })
 
         val cal = findViewById<CalendarView>(R.id.calendarView)
-
+        val thisDate = findViewById<TextView>(R.id.textView)
         cal.setOnDateChangeListener {
             view, year, month, dayOfMonth->
             val date = dayOfMonth.toString()+"-"+(month+1)+"-"+year
+            thisDate.text = "$date"
         }
 
         val nxtButton = findViewById<Button>(R.id.nxtButton)
-
         nxtButton.setOnClickListener { it: View? ->
 
             val forwardIntent = this.intent.extras
@@ -50,7 +52,7 @@ class SaveProfile : AppCompatActivity() {
             }
             val email = emailAddress.text.toString()
             val pNUM = phoneNumber.text.toString()
-            val date = phoneNumber.text.toString()
+            val date = thisDate.text.toString()
 
             intent.putExtra("Email Address", email)
             intent.putExtra("Phone number", pNUM)

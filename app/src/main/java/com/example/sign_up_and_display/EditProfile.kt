@@ -51,9 +51,7 @@ class EditProfile : AppCompatActivity() {
             intent.putExtra("Username", userN)
             intent.putExtra("Age", Age)
 
-
+            startActivity(intent)
         }
-
-
     }
 }

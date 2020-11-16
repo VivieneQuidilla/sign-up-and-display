@@ -3,6 +3,7 @@ package com.example.sign_up_and_display
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 
@@ -24,8 +25,14 @@ class DisplayProfile : AppCompatActivity() {
         val displayChanges = findViewById<TextView>(R.id.changes)
 
         displayChanges.text =
-            "First name: $firstN\tLast name: $lastN\nUsername: $userN\n Email: $emailAdd\nAge: " +
-                    "$Age\nContact number: $pNUM\nDate & Time (Edited): $date"
+            "First name: $firstN\tLast name: $lastN\nUsername: $userN\nEmail: $emailAdd\nAge: " +
+                    "$Age\nContact number: $pNUM\nDate: $date"
 
+        val button = findViewById<Button>(R.id.logout)
+
+        button.setOnClickListener {
+            val intent = Intent(this, EditProfile::class.java)
+            startActivity(intent)
+        }
     }
 }
